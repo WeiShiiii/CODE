@@ -1,0 +1,40 @@
+from ArrayStack import ArrayStack
+from ArrayQueue import ArrayQueue
+
+def permutations(lst):
+
+    s = ArrayStack()
+
+    q = ArrayQueue()
+
+    for i in range(len(lst)):
+
+        if index == 0:
+
+            q.enqueue([lst[i]])
+
+        else:
+
+            while not q.is_empty():
+
+                value = q.dequeue()
+
+                for var in range(0,len(value)+1):
+
+                    lst_value = value[:]
+
+                    lst_value.insert(var, lst[i])
+
+                    s.push(lst_value)
+
+            while not s.is_empty():
+
+                q.enqueue(s.pop())
+
+    output = []
+
+    while not q.is_empty():
+
+        output.append(q.dequeue())
+
+    return output
